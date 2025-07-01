@@ -116,21 +116,19 @@ const HomeSection = ({ isLoaded, setActiveSection }) => {
               </span>
             </h2>
 
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-5xl font-bold text-white leading-tight lg:leading-none mb-4 sm:mb-6 lg:mb-8">
+            <h1 className="text-2xl sm:text-3xl md:text-3xl lg:text-4xl xl:text-4xl 2xl:text-4xl font-bold text-white leading-tight lg:leading-none mb-4 sm:mb-6 lg:mb-8">
               <div className="break-words">
                 Teruslah Semangat<br />
                 Pantang{' '}
-                <span className="relative inline-block pt-3">
-                  <span className="relative z-10 text-purple-300 p-3">
+          <span className="relative inline-block pt-3">
+                  <span className="relative z-10 text-purple-300 px-3 py-1 sm:p-3">
                     Menyerah
                   </span>
                   <span
                     className="absolute inset-0 border-2 border-purple-400 rounded-full"
                     style={{
-                      top: '12px',
-                      left: '0px',
-                      right: '-8px',
-                      bottom: '-12px',
+                      top: '10px',
+                      bottom: '-6px',
                       transform: 'rotate(0deg) scaleX(1.05)',
                     }}
                   ></span>
