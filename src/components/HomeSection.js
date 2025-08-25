@@ -112,7 +112,7 @@ const HomeSection = ({ isLoaded, setActiveSection }) => {
 
             <h2 className="text-sm sm:text-base lg:text-lg xl:text-xl text-white mb-2 lg:mb-3 xl:mb-4">
               <span className=" decoration-2 underline-offset-4">
-               Daffa Aditya - ( A Mobile Developer )
+               Daffa Aditya - ( A Software Engineer )
               </span>
             </h2>
 
@@ -139,7 +139,7 @@ const HomeSection = ({ isLoaded, setActiveSection }) => {
             </h1>
 
             <p className="text-gray-200 mt-4 sm:mt-6 lg:mt-8 text-sm lg:text-base max-w-md mx-auto lg:mx-0 pb-4">
-              Get Dreams Hopes and Dreams for a Beautiful Future  🔥
+              Raihlah harapan dan impian untuk masa depan yang indah 🔥
             </p>
                     {/* Button Download CV */}
             <div className="mt-3 lg:mt-2">
@@ -179,23 +179,23 @@ const HomeSection = ({ isLoaded, setActiveSection }) => {
           </h2>
 
   <p className="text-lg">
-    Currently, I am a studying mobile developer at Jember State Polytechnic and have just graduated.
+    Saat ini, saya adalah seorang mobile developer yang sedang menempuh pendidikan di Politeknik Negeri Jember dan baru saja lulus.
     <a href="https://facebook.com" className="text-blue-400 ml-1 inline-flex items-center gap-1">
       {/* svg facebook */}
-    </a>
-  </p>
+        </a>
+        </p>
 
-  <p className='text-justify text-left'>
-    Seorang Flutter enthusiast yang baru saja lulus, siap terjun ke dunia kerja dan berkomitmen penuh untuk membangun aplikasi mobile modern dengan Flutter.  Selain mobile developer, saya juga paham mengenai website seperti stack Laravel,Bootstrap,Rest API namun tidak mendalam.<br />
-  </p>
+        <p className='text-justify text-left'>
+        Sebagai seorang Flutter enthusiast yang baru saja lulus, saya siap berkontribusi di dunia kerja dengan semangat tinggi dan dedikasi untuk membangun aplikasi mobile modern menggunakan Flutter. Selain berfokus pada pengembangan mobile, saya juga memiliki pengalaman dalam pengembangan website menggunakan Laravel, Bootstrap, dan REST API. Saya selalu antusias untuk belajar hal baru dan beradaptasi dengan teknologi terkini.<br />
+        </p>
 
-  {/* List */} 
+        {/* List */} 
   <div className="pt-6">
-    <h2 className="text-2xl font-semibold text-purple-300 mb-2">Hal lain yang saya suka:</h2>
+    <h2 className="text-2xl font-semibold text-purple-300 mb-2">Hal lain yang saya sukai:</h2>
     <ul className="list-disc list-inside space-y-2 text-base text-gray-200">
-      <li>Mempelajari lebih dalam website (Reacts Js,Laravel)</li>
-      <li>Mempelajari pembuatan model AI dengan python</li>
-      <li>Fotograpy dan Edit Foto</li>
+      <li>Mempelajari lebih dalam tentang website (React JS, Laravel)</li>
+      <li>Mempelajari pembuatan model AI dengan Python</li>
+      <li>Fotografi dan editing foto</li>
     </ul>
   </div>
 </div>
