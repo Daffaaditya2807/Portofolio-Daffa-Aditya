@@ -4,47 +4,12 @@ import React from 'react';
 // import { Code, Palette, Smartphone, Globe, Settings, Users, MessageCircle, Target } from 'lucide-react';
 import memojiImage from '../assets/userpng.png';
 
-// const skills = [
-//       { name: 'Mobile Development', icon: Smartphone, level: 85 },
-//   { name: 'Frontend Development', icon: Code, level: 80 },
-//   { name: 'Web Development', icon: Globe, level: 70 },
-//     { name: 'UI/UX Design', icon: Palette, level: 65 },
-// ];
 
-// const hardSkills = [
-//   'Flutter Framework',
-//   'Java',
-//   'Python',
-//   'Dart',
-//   'Laravel Framework',
-//   'PHP',
-//   'MySQL',
-//   'Firebase',
-//   'Figma',
-//   'Corel Draw',
-//   'Adobe Photoshop',
-//   'Google Speedsheet, Docs, dan Slide',
-//   'Trello',
-//   'Git',
-//   'GitHub'
-// ];
-
-// const softSkills = [
-//   { name: 'Komunikasi', icon: MessageCircle },
-//   { name: 'Kerja sama Tim', icon: Users },
-//   { name: 'Analisa', icon: Settings },
-//   { name: 'Berorientasi', icon: Target }
-// ];
-
-// const languages = [
-//   { name: 'Bahasa Indonesia', level: 'Mahir' },
-//   { name: 'Bahasa Inggris', level: 'Menengah' }
-// ];
 
 const AboutSection = () => {
   return (
     <div className="max-w-6xl mx-auto animate-fade-in">
-        <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-400">Tentang Saya</h2>
+        <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 text-transparent bg-clip-text bg-white">Tentang Saya</h2>
         
         <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
             <div>
@@ -61,7 +26,7 @@ const AboutSection = () => {
                     {/* Liquid Glass Effect Container */}
                     <div className="relative w-80 h-100 rounded-3xl overflow-hidden backdrop-blur-xl bg-gradient-to-br from-white/20 via-white/10 to-white/5 border border-white/30 shadow-2xl hover:shadow-purple-500/25 transition-all duration-500 hover:scale-105">
                         {/* Inner glow */}
-                        <div className="absolute inset-0 bg-gradient-to-br from-purple-400/10 via-transparent to-blue-400/10 rounded-3xl"></div>
+                        <div className="absolute inset-0 bg-gradient-to-br from-gray-400/10 via-transparent to-blue-400/10 rounded-3xl"></div>
                         
                         {/* Highlight effects */}
                         <div className="absolute top-2 left-2 w-16 h-16 bg-white/20 rounded-full blur-xl"></div>
@@ -73,22 +38,22 @@ const AboutSection = () => {
                             src={memojiImage} 
                             alt="" 
                             aria-hidden="true"
-                            className="w-full h-full object-contain drop-shadow-2xl hover:drop-shadow-purple-500/50 transition-all duration-300 group-hover:scale-110"
+                            className="w-full h-full object-contain drop-shadow-2xl hover:drop-shadow-gray-500/50 transition-all duration-300 group-hover:scale-110"
                         />
                         </div>
                         
                         {/* Animated border light */}
-                        <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-purple-400/50 via-blue-400/50 to-purple-400/50 p-[1px] opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                        <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-gray-400/50 via-gray-400/50 to-gray-400/50 p-[1px] opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                             <div className="w-full h-full rounded-3xl bg-transparent"></div>
                         </div>
                     </div>
                     
                     {/* Floating particles effect */}
                     <div className="absolute -inset-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                        <div className="absolute top-4 left-4 w-2 h-2 bg-purple-400 rounded-full animate-pulse"></div>
-                        <div className="absolute top-12 right-8 w-1 h-1 bg-blue-400 rounded-full animate-ping"></div>
+                        <div className="absolute top-4 left-4 w-2 h-2 bg-gray-400 rounded-full animate-pulse"></div>
+                        <div className="absolute top-12 right-8 w-1 h-1 bg-gray-400 rounded-full animate-ping"></div>
                         <div className="absolute bottom-8 left-12 w-1.5 h-1.5 bg-white rounded-full animate-pulse"></div>
-                        <div className="absolute bottom-4 right-4 w-1 h-1 bg-purple-300 rounded-full animate-ping"></div>
+                        <div className="absolute bottom-4 right-4 w-1 h-1 bg-gray-300 rounded-full animate-ping"></div>
                     </div>
                 </div>
             </div>

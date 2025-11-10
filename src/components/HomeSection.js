@@ -88,8 +88,8 @@ const HomeSection = ({ isLoaded, setActiveSection }) => {
            
             {/* Gambar + Efek Glow */}
             <div className="relative w-40 sm:w-44 md:w-52 lg:w-60 xl:w-64 h-40 sm:h-44 md:h-52 lg:h-60 xl:h-64 flex items-center justify-center">
-              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-purple-400/20 to-blue-500/20 blur-2xl scale-150 animate-pulse"></div>
-              <div className="absolute inset-0 rounded-full bg-gradient-to-br from-purple-300/15 to-pink-400/15 blur-xl scale-125"></div>
+              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-gray-800 to-gray-700 blur-2xl scale-150 animate-pulse"></div>
+              <div className="absolute inset-0 rounded-full bg-gradient-to-br from-gray-800/15 to-gray-700/15 blur-xl scale-125"></div>
               <div className="absolute inset-0 rounded-full bg-white/8 blur-lg"></div>
 
               <img
@@ -97,7 +97,7 @@ const HomeSection = ({ isLoaded, setActiveSection }) => {
                 alt="Daffa Aditya Rejasa Ruswanto Memoji"
                 className="relative z-10 w-full h-full object-contain"
                 style={{
-                  filter: 'drop-shadow(0 0 20px rgba(139, 92, 246, 0.3))'
+                  filter: 'drop-shadow(0 0 20px bg-gray-700)'
                 }}
               />
             </div>
@@ -121,17 +121,9 @@ const HomeSection = ({ isLoaded, setActiveSection }) => {
                 Teruslah Semangat<br />
                 Pantang{' '}
           <span className="relative inline-block pt-3">
-                  <span className="relative z-10 text-purple-300 px-3 py-1 sm:p-3">
+                  <span className="relative z-10 text-white italic px-3 py-1 sm:p-3">
                     Menyerah
                   </span>
-                  <span
-                    className="absolute inset-0 border-2 border-purple-400 rounded-full"
-                    style={{
-                      top: '10px',
-                      bottom: '-6px',
-                      transform: 'rotate(0deg) scaleX(1.05)',
-                    }}
-                  ></span>
                 </span>
                 <br />
                 <span className="text-white">...</span>
@@ -143,10 +135,10 @@ const HomeSection = ({ isLoaded, setActiveSection }) => {
             </p>
                     {/* Button Download CV */}
             <div className="mt-3 lg:mt-2">
-              <button
-                onClick={handleDownloadCV}
-                className="group relative inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-purple-500 to-blue-500 text-white font-medium text-sm lg:text-base rounded-full hover:from-purple-600 hover:to-blue-600 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 transform active:scale-95"
-              >
+            <button
+  onClick={handleDownloadCV}
+  className="group relative inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-gray-300 to-gray-100 text-gray-900 font-medium text-sm lg:text-base rounded-full hover:from-gray-400 hover:to-gray-200 transition-all duration-300 shadow-lg shadow-gray-500/20 hover:shadow-xl hover:scale-105 transform active:scale-95"
+>
                 {/* Icon Download */}
                 <svg 
                   className="w-5 h-5 transition-transform duration-300 group-hover:-translate-y-0.5" 
@@ -161,7 +153,7 @@ const HomeSection = ({ isLoaded, setActiveSection }) => {
                     d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" 
                   />
                 </svg>
-                Download CV Daffa Aditya
+                CV Daffa Aditya
                 {/* Shine Effect */}
                 <span className="absolute inset-0 rounded-full bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 transform -skew-x-12 transition-opacity duration-500"></span>
               </button>
@@ -172,9 +164,9 @@ const HomeSection = ({ isLoaded, setActiveSection }) => {
   {/* Bagian Atas */}
  <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white">
             I'm a{' '}
-            <span className="text-purple-300 relative">
+            <span className="text-gray-400 relative">
               {displayText}
-              <span className="absolute -right-1 top-0 animate-pulse text-purple-300">|</span>
+              <span className="absolute -right-1 top-0 animate-pulse text-white">|</span>
             </span>
           </h2>
 
@@ -191,7 +183,7 @@ const HomeSection = ({ isLoaded, setActiveSection }) => {
 
         {/* List */} 
   <div className="pt-6">
-    <h2 className="text-2xl font-semibold text-purple-300 mb-2">Hal lain yang saya sukai:</h2>
+    <h2 className="text-2xl font-semibold text-white mb-2">Hal lain yang saya sukai:</h2>
     <ul className="list-disc list-inside space-y-2 text-base text-gray-200">
       <li>Mempelajari lebih dalam tentang website (React JS, Laravel)</li>
       <li>Mempelajari pembuatan model AI dengan Python</li>

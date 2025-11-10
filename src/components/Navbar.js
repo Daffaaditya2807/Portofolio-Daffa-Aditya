@@ -14,7 +14,8 @@ const Navbar = ({ navItems, activeSection, setActiveSection, isLoaded }) => {
   return (
     <nav className="relative z-10 flex justify-between items-center p-6 md:p-8">
       <div className={`text-3xl font-bold transition-all duration-1000 ${isLoaded ? 'translate-y-0 opacity-100' : '-translate-y-10 opacity-0'}`}>
-        <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-400">
+        {/* DIUBAH: Gradien dihapus, diubah menjadi text-white solid */}
+        <span className="text-white">
           ⚡
         </span>
       </div>
@@ -27,7 +28,9 @@ const Navbar = ({ navItems, activeSection, setActiveSection, isLoaded }) => {
               key={item.id}
               onClick={() => setActiveSection(item.id)}
               className={`
-                relative transition-all duration-500 hover:text-purple-300 group
+                relative transition-all duration-500 group
+                ${/* DIUBAH: Menambahkan logika warna teks aktif/non-aktif monokrom */ ''}
+                ${activeSection === item.id ? 'text-white' : 'text-gray-400 hover:text-white'}
                 ${isLoaded ? 'translate-y-0 opacity-100' : '-translate-y-10 opacity-0'}
               `}
               style={{ transitionDelay: `${index * 100}ms` }}
@@ -35,7 +38,9 @@ const Navbar = ({ navItems, activeSection, setActiveSection, isLoaded }) => {
               <span className="hidden md:inline">{item.label}</span>
               {Icon && <Icon className="md:hidden w-5 h-5" />}
               <div className={`
-                absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-purple-400 to-blue-400 transition-all duration-300
+                absolute -bottom-1 left-0 h-0.5 transition-all duration-300
+                ${/* DIUBAH: Gradien ungu/biru diubah menjadi bg-white solid */ ''}
+                bg-white
                 ${activeSection === item.id ? 'w-full' : 'w-0 group-hover:w-full'}
               `} />
             </button>

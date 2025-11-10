@@ -1,11 +1,11 @@
 // src/components/BottomNavigation.js
 
 import React, { useState } from 'react';
-import { Home, User, Beaker, Mail  } from 'lucide-react';
+import { Home, User, Beaker, Mail } from 'lucide-react';
 
 const BottomNavigation = ({ navItems, activeSection, setActiveSection, isVisible }) => {
   const [hoveredItem, setHoveredItem] = useState(null);
-  
+
   const getIcon = (id) => {
     switch(id) {
       case 'home': return <Home className="w-5 h-5" />;
@@ -25,7 +25,8 @@ const BottomNavigation = ({ navItems, activeSection, setActiveSection, isVisible
       ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-24 opacity-0'}
     `}>
       {/* Glow effect at the top */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-500/50 to-transparent" />
+      {/* DIUBAH: via-blue-500/50 -> via-white/20 */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
       
       <div className="relative">
         {/* Background with gradient */}
@@ -41,8 +42,10 @@ const BottomNavigation = ({ navItems, activeSection, setActiveSection, isVisible
                 left: `${getActiveIndex() * 25}%`,
               }}
             >
-              <div className="h-full w-full bg-gradient-to-t from-blue-600/20 via-purple-600/10 to-transparent" />
-              <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full blur-sm" />
+              {/* DIUBAH: from-blue-600/20 via-purple-600/10 -> from-white/10 via-white/5 */}
+              <div className="h-full w-full bg-gradient-to-t from-white/10 via-white/5 to-transparent" />
+              {/* DIUBAH: from-blue-500 to-purple-600 -> bg-white */}
+              <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-white rounded-full blur-sm" />
             </div>
             
             {navItems.map((item, index) => (
@@ -60,7 +63,8 @@ const BottomNavigation = ({ navItems, activeSection, setActiveSection, isVisible
                 <div className="relative">
                   {/* Glow effect for active item */}
                   {activeSection === item.id && (
-                    <div className="absolute inset-0 bg-blue-500 rounded-full blur-xl opacity-50 scale-150 animate-pulse" />
+                    // DIUBAH: bg-blue-500 -> bg-white
+                    <div className="absolute inset-0 bg-white rounded-full blur-xl opacity-50 scale-150 animate-pulse" />
                   )}
                   
                   {/* Icon */}
@@ -78,7 +82,8 @@ const BottomNavigation = ({ navItems, activeSection, setActiveSection, isVisible
                   
                   {/* Active dot indicator */}
                   {activeSection === item.id && (
-                    <div className="absolute -top-1 -right-1 w-2 h-2 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full animate-pulse" />
+                    // DIUBAH: from-blue-400 to-purple-400 -> bg-white
+                    <div className="absolute -top-1 -right-1 w-2 h-2 bg-white rounded-full animate-pulse" />
                   )}
                 </div>
                 
@@ -136,7 +141,8 @@ export const FloatingPillsBottomNav = ({ navItems, activeSection, setActiveSecti
     `}>
       <div className="relative">
         {/* Glow Effect */}
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-600/30 to-purple-600/30 rounded-full blur-2xl" />
+        {/* DIUBAH: from-blue-600/30 to-purple-600/30 -> bg-white/20 */}
+        <div className="absolute inset-0 bg-white/20 rounded-full blur-2xl" />
         
         {/* Navigation Pills */}
         <div className="relative flex items-center gap-2 px-2 py-2 bg-black/60 backdrop-blur-xl rounded-full border border-white/10 shadow-2xl">
@@ -148,14 +154,16 @@ export const FloatingPillsBottomNav = ({ navItems, activeSection, setActiveSecti
                 relative px-5 py-3 rounded-full font-medium
                 transition-all duration-300 ease-out group
                 ${activeSection === item.id 
-                  ? 'text-white' 
+                  // DIUBAH: text-white -> text-black (agar kontras dengan background abu terang)
+                  ? 'text-black' 
                   : 'text-gray-300 hover:text-white'
                 }
               `}
             >
               {/* Active Background */}
               {activeSection === item.id && (
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full animate-pulse" />
+                // DIUBAH: from-blue-600 to-purple-600 -> from-gray-100 to-gray-300
+                <div className="absolute inset-0 bg-gradient-to-r from-gray-100 to-gray-300 rounded-full animate-pulse" />
               )}
               
               {/* Hover Background */}
@@ -196,7 +204,8 @@ export const NeonGlassNav = ({ navItems, activeSection, setActiveSection, isVisi
     `}>
       <div className="relative">
         {/* Glow Effect */}
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl blur-xl opacity-50 animate-pulse" />
+        {/* DIUBAH: from-blue-600 to-purple-600 -> bg-white/30 */}
+        <div className="absolute inset-0 bg-white/30 rounded-2xl blur-xl opacity-50 animate-pulse" />
         
         <div className="relative flex items-center gap-1 p-1 bg-black/50 backdrop-blur-xl rounded-2xl border border-white/20">
           {navItems.map((item) => (
@@ -215,7 +224,8 @@ export const NeonGlassNav = ({ navItems, activeSection, setActiveSection, isVisi
               <div className={`
                 transition-all duration-300
                 ${activeSection === item.id 
-                  ? 'text-white drop-shadow-[0_0_10px_rgba(59,130,246,0.8)]' 
+                  // DIUBAH: drop-shadow-[0_0_10px_rgba(59,130,246,0.8)] -> drop-shadow-[0_0_8px_rgba(255,255,255,0.7)]
+                  ? 'text-white drop-shadow-[0_0_8px_rgba(255,255,255,0.7)]' 
                   : 'text-gray-400 group-hover:text-white'
                 }
               `}>
@@ -272,7 +282,8 @@ export const MinimalGlassBottomNav = ({ navItems, activeSection, setActiveSectio
                 <div className={`
                   transition-all duration-300
                   ${activeSection === item.id 
-                    ? 'text-blue-400 scale-110' 
+                    // DIUBAH: text-blue-400 -> text-white
+                    ? 'text-white scale-110' 
                     : 'text-gray-400 group-hover:text-gray-200 group-hover:scale-105'
                   }
                 `}>
@@ -283,7 +294,8 @@ export const MinimalGlassBottomNav = ({ navItems, activeSection, setActiveSectio
                 <span className={`
                   text-xs font-medium transition-all duration-300
                   ${activeSection === item.id 
-                    ? 'text-blue-400' 
+                    // DIUBAH: text-blue-400 -> text-white
+                    ? 'text-white' 
                     : 'text-gray-500 group-hover:text-gray-300'
                   }
                 `}>
@@ -293,7 +305,8 @@ export const MinimalGlassBottomNav = ({ navItems, activeSection, setActiveSectio
                 {/* Active Line Indicator */}
                 <div className={`
                   absolute bottom-0 left-1/2 transform -translate-x-1/2
-                  h-0.5 bg-gradient-to-r from-blue-400 to-purple-400
+                  // DIUBAH: h-0.5 bg-gradient-to-r from-blue-400 to-purple-400 -> h-0.5 bg-white
+                  h-0.5 bg-white
                   transition-all duration-300
                   ${activeSection === item.id ? 'w-12' : 'w-0'}
                 `} />

@@ -18,6 +18,8 @@ const Portfolio = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [showBottomNav, setShowBottomNav] = useState(false);
 
+  const [selectedProject, setSelectedProject] = useState(null);
+
   useEffect(() => {
     setIsLoaded(true);
 
@@ -90,37 +92,20 @@ const Portfolio = () => {
         className="fixed inset-0 z-0"
         style={{
           background: `
-            radial-gradient(ellipse at top, #100a2e 0%, #000000 50%, #100a2e 100%),
-            linear-gradient(135deg, #000000 0%, #100a2e 25%, #000000 50%, #100a2e 75%, #000000 100%)
+           radial-gradient(ellipse at top, #222222 0%, #000000 50%, #222222 100%),
+linear-gradient(135deg, #000000 0%, #222222 25%, #000000 50%, #222222 75%, #000000 100%)
           `,
           backgroundSize: '400% 400%',
           animation: 'gradientShift 15s ease infinite'
         }}
       />
 
-      {/* Starfield Effect */}
-      {/* <div className="fixed inset-0 z-5">
-        {[...Array(100)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute bg-white rounded-full animate-pulse"
-            style={{
-              left: Math.random() * 100 + '%',
-              top: Math.random() * 100 + '%',
-              width: Math.random() * 3 + 1 + 'px',
-              height: Math.random() * 3 + 1 + 'px',
-              opacity: Math.random() * 0.8 + 0.2,
-              animationDelay: Math.random() * 3 + 's',
-              animationDuration: (Math.random() * 4 + 2) + 's'
-            }}
-          />
-        ))}
-      </div> */}
+
 
       {/* Subtle Light Effects */}
-      <div className="fixed w-[600px] h-[600px] bg-blue-600 blur-[200px] rounded-full opacity-10 mix-blend-screen top-[10%] left-[20%] z-10 animate-pulse" style={{ animationDuration: '8s' }} />
-      <div className="fixed w-[400px] h-[400px] bg-purple-500 blur-[150px] rounded-full opacity-15 mix-blend-screen bottom-[20%] right-[15%] z-10 animate-pulse" style={{ animationDuration: '6s', animationDelay: '2s' }} />
-      <div className="fixed w-[300px] h-[300px] bg-indigo-400 blur-[120px] rounded-full opacity-20 mix-blend-screen top-[60%] left-[10%] z-10 animate-pulse" style={{ animationDuration: '10s', animationDelay: '4s' }} />
+     <div className="fixed w-[600px] h-[600px] bg-gray-800 blur-[200px] rounded-full opacity-10 mix-blend-screen top-[10%] left-[20%] z-10 animate-pulse" style={{ animationDuration: '8s' }} />
+<div className="fixed w-[400px] h-[400px] bg-gray-700 blur-[150px] rounded-full opacity-15 mix-blend-screen bottom-[20%] right-[15%] z-10 animate-pulse" style={{ animationDuration: '6s', animationDelay: '2s' }} />
+<div className="fixed w-[300px] h-[300px] bg-gray-900 blur-[120px] rounded-full opacity-20 mix-blend-screen top-[60%] left-[10%] z-10 animate-pulse" style={{ animationDuration: '10s', animationDelay: '4s' }} />
 
       {/* Komponen Navbar yang sudah dipisah - tetap menggunakan navbar asli */}
       <Navbar 
@@ -131,11 +116,12 @@ const Portfolio = () => {
       />
 
       {/* Bottom Navigation - muncul saat navbar asli tidak terlihat */}
-      <NeonGlassNav 
+ <NeonGlassNav 
         navItems={navItems}
         activeSection={activeSection}
         setActiveSection={scrollToSection}
-        isVisible={showBottomNav}
+        // Tampilkan HANYA jika showBottomNav=true DAN modal tidak tampil
+        isVisible={showBottomNav && !selectedProject} 
       />
 
       {/* Main Content Container - Semua section dalam satu page */}
@@ -153,7 +139,8 @@ const Portfolio = () => {
         
         {/* Lab Section */}
         <section id="lab" className="min-h-screen flex items-center justify-center px-4 py-20">
-          <LabSection />
+          <LabSection selectedProject={selectedProject}
+            setSelectedProject={setSelectedProject} />
         </section>
         
         {/* Contact Section */}
@@ -198,9 +185,9 @@ const Portfolio = () => {
               top: Math.random() * 100 + '%',
               width: Math.random() * 100 + 50 + 'px',
               height: Math.random() * 100 + 50 + 'px',
-              background: `radial-gradient(circle, ${
-                ['rgba(59, 130, 246, 0.1)', 'rgba(147, 51, 234, 0.1)', 'rgba(99, 102, 241, 0.1)', 'rgba(79, 70, 229, 0.1)'][Math.floor(Math.random() * 4)]
-              } 0%, transparent 70%)`,
+        background: `radial-gradient(circle, ${
+  ['rgba(255, 255, 255, 0.1)', 'rgba(255, 255, 255, 0.08)', 'rgba(255, 255, 255, 0.12)', 'rgba(255, 255, 255, 0.09)'][Math.floor(Math.random() * 4)]
+} 0%, transparent 70%)`,
               filter: `blur(${Math.random() * 20 + 10}px)`,
               animationDelay: Math.random() * 5 + 's',
               animationDuration: (Math.random() * 8 + 6) + 's'

@@ -34,7 +34,7 @@ const ContactSection = () => {
 
   return (
     <div className="max-w-2xl mx-auto text-center animate-fade-in">
-      <h2 className="text-4xl md:text-5xl font-bold mb-8 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-400">
+      <h2 className="text-4xl md:text-5xl font-bold mb-8 text-transparent bg-clip-text text-white">
         Let's Connect
       </h2>
 
@@ -53,27 +53,27 @@ const ContactSection = () => {
             name="name"
             placeholder="Nama Kamu"
             required
-            className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-400"
+            className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-400"
           />
           <input
             type="email"
             name="email"
             placeholder="Email Kamu"
             required
-            className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-400"
+            className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-400"
           />
           <textarea
             name="message"
             placeholder="Pesan Kamu"
             rows="5"
             required
-            className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-400 resize-none"
+            className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-400 resize-none"
           />
-          <button
-            type="submit"
-            disabled={loading}
-            className="w-full py-3 bg-gradient-to-r from-purple-500 to-blue-500 rounded-lg text-white font-semibold transition-all duration-300 hover:scale-105"
-          >
+        <button
+  type="submit"
+  disabled={loading}
+  className="w-full py-3 rounded-full bg-white text-black font-semibold transition-all duration-300 hover:scale-105 hover:bg-gray-200 disabled:bg-gray-400 disabled:text-gray-700 disabled:scale-100"
+>
             {loading ? 'Mengirim...' : 'Mengirim Pesan'}
           </button>
         </div>

@@ -64,11 +64,12 @@ body {
 }
 
 @keyframes glow {
+  /* DIUBAH: Efek glow biru/ungu menjadi putih */
   0%, 100% {
-    box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
   }
   50% {
-    box-shadow: 0 0 40px rgba(147, 51, 234, 0.5);
+    box-shadow: 0 0 40px rgba(255, 255, 255, 0.4);
   }
 }
 
@@ -78,22 +79,25 @@ body {
   hyphens: auto;
 }
 
-/* Custom scrollbar untuk tema dark */
+/* Custom scrollbar untuk tema monokrom */
 ::-webkit-scrollbar {
   width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #100a2e;
+  /* DIUBAH: Latar ungu tua menjadi abu-abu sangat gelap */
+  background: #111111;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #4c4c7e;
+  /* DIUBAH: Thumb ungu menjadi abu-abu */
+  background: #888888;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #6366f1;
+  /* DIUBAH: Hover biru menjadi abu-abu terang */
+  background: #AAAAAA;
 }
 
 /* Glassmorphism effect */
@@ -106,7 +110,8 @@ body {
 /* Animated border */
 .animated-border {
   position: relative;
-  background: linear-gradient(45deg, transparent, rgba(59, 130, 246, 0.3), transparent);
+  /* DIUBAH: Gradien biru menjadi putih */
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.2), transparent);
   background-size: 200% 200%;
   animation: gradientShift 3s ease infinite;
 }
@@ -146,16 +151,21 @@ body {
 
 /* Enhanced button styles */
 .btn-primary {
-  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  /* DIUBAH: Gradien biru/ungu menjadi abu-abu terang/putih */
+  background: linear-gradient(135deg, #E0E0E0 0%, #FFFFFF 100%);
+  /* DIUBAH: Teks menjadi hitam agar kontras */
+  color: #000;
   border: 1px solid rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(10px);
   transition: all 0.3s ease;
 }
 
 .btn-primary:hover {
-  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+  /* DIUBAH: Gradien hover kebalikan dari putih/abu-abu */
+  background: linear-gradient(135deg, #FFFFFF 0%, #E0E0E0 100%);
   transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+  /* DIUBAH: Bayangan biru menjadi putih */
+  box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
 }
 
 /* Card styles */
@@ -169,7 +179,13 @@ body {
 
 .card:hover {
   background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(99, 102, 241, 0.3);
+  /* DIUBAH: Border hover biru menjadi putih */
+  border-color: rgba(255, 255, 255, 0.3);
   transform: translateY(-5px);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Menambahkan utility class untuk menyembunyikan scrollbar di WebKit (Chrome, Safari) */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
 }

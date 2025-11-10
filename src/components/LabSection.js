@@ -1,11 +1,34 @@
-import React, { useState } from 'react';
-import { ExternalLink, Github, Play, Star, Smartphone, Users, Globe } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { ExternalLink, Github, Eye, Star, Smartphone, Users, Globe } from 'lucide-react';
 
 
-const LabSection = () => {
-  const [selectedProject, setSelectedProject] = useState(null);
-  const [activeFilter, setActiveFilter] = useState('all');
+const LabSection = ({ selectedProject, setSelectedProject }) => {
+const [activeFilter, setActiveFilter] = useState('all');
   const getImage = (path) => require(`../assets/projects/${path}`);
+
+  // --- ⬇️ GANTI DENGAN LOGIKA BARU INI ⬇️ ---
+  useEffect(() => {
+    // Dapatkan referensi ke <html> dan <body>
+    const htmlElement = document.documentElement;
+    const bodyElement = document.body;
+
+    if (selectedProject) {
+      // Kunci scroll pada kedua elemen
+      htmlElement.style.overflow = 'hidden';
+      bodyElement.style.overflow = 'hidden';
+    } else {
+      // Kembalikan scroll pada kedua elemen
+      htmlElement.style.overflow = 'auto';
+      bodyElement.style.overflow = 'auto';
+    }
+
+    // Fungsi cleanup: Selalu pastikan scroll kembali normal
+    return () => {
+      htmlElement.style.overflow = 'auto';
+      bodyElement.style.overflow = 'auto';
+    };
+  }, [selectedProject]); // <-- Tetap memantau 'selectedProject'
+  // --- ⬆️ AKHIR DARI BLOK PENGGANTI ⬆️ ---
 
 
 
@@ -206,9 +229,9 @@ const LabSection = () => {
             <div className="absolute top-2 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-gray-700 rounded-full"></div>
             <div className="absolute inset-3 bg-white rounded-[1.8rem] overflow-hidden">
               <img src={project.image} alt={project.title} className="w-full h-full object-cover" />
-              <div className="absolute inset-0 bg-purple-600/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                 <button onClick={() => setSelectedProject(project)} className="bg-white/20 backdrop-blur-sm rounded-full p-4 hover:bg-white/30 transition-colors">
-                  <Play className="w-8 h-8 text-white" fill="white" />
+                  <Eye className="w-8 h-8 text-white"  />
                 </button>
               </div>
             </div>
@@ -223,9 +246,9 @@ const LabSection = () => {
             </div>
             <div className="bg-white rounded-md overflow-hidden h-[calc(100%-1.25rem)]">
               <img src={project.image} alt={project.title} className="w-full h-full object-cover object-top" />
-               <div className="absolute inset-0 bg-purple-600/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+               <div className="absolute inset-0 bg-gray-600/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                 <button onClick={() => setSelectedProject(project)} className="bg-white/20 backdrop-blur-sm rounded-full p-4 hover:bg-white/30 transition-colors">
-                  <Play className="w-8 h-8 text-white" fill="white" />
+                  <Eye className="w-8 h-8 text-white"  />
                 </button>
               </div>
             </div>
@@ -241,7 +264,7 @@ const LabSection = () => {
         </div>
         <div className="flex flex-wrap gap-2">
           {project.tech.slice(0, 3).map((tech, index) => (
-            <span key={index} className="px-2 py-1 bg-purple-500/20 text-purple-300 text-xs rounded-full border border-purple-500/30">
+            <span key={index} className="px-2 py-1 bg-gray-600/80 text-white text-xs rounded-full border border-gray-500/30">
               {tech}
             </span>
           ))}
@@ -265,7 +288,7 @@ const LabSection = () => {
                 <Globe className="w-4 h-4 text-white" />
               </a>
             )}
-            <button onClick={() => setSelectedProject(project)} className="p-2 bg-purple-600 rounded-full hover:bg-purple-700 transition-colors">
+            <button onClick={() => setSelectedProject(project)} className="p-2 bg-gray-600 rounded-full hover:bg-gray-700 transition-colors">
               <ExternalLink className="w-4 h-4 text-white" />
             </button>
           </div>
@@ -274,12 +297,115 @@ const LabSection = () => {
     </div>
   );
 
+  const ProjectModal = ({ project, onClose }) => {
+  
+  return (
+    <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+      <div className="bg-white/10 backdrop-blur-md rounded-3xl border border-white/20 max-w-6xl max-h-[90vh] overflow-y-auto scrollbar-none hide-scrollbar">
+        <div className="p-8">
+          {/* Header Modal */}
+          <div className="flex justify-between items-start mb-8">
+            <div>
+              <h3 className="text-3xl font-bold text-white mb-2">{project.title}</h3>
+              <p className="text-gray-300 text-justify">{project.longDescription}</p>
+            </div>
+            {/* Gunakan onClose di sini */}
+            <button onClick={onClose} className="p-2 bg-white/10 rounded-full hover:bg-white/20 transition-colors">
+              <span className="text-white text-xl">✕</span>
+            </button>
+          </div>
+
+          {/* Konten Modal */}
+          <div className="grid lg:grid-cols-2 gap-8">
+            
+            {/* Kolom Kiri: Screenshots */}
+            <div>
+              <h4 className="text-xl font-semibold text-white mb-4">Screenshots</h4>
+              
+              {project.type === 'web' ? (
+                // Tampilan Web
+                <div className="space-y-4">
+                  {project.screenshots.map((screenshot, index) => (
+                    <div key={index} className="relative w-full bg-gray-900 rounded-lg border-2 border-gray-800 shadow-lg p-2">
+                      <div className="flex items-center gap-1.5 mb-2">
+                        <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+                        <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                        <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                      </div>
+                      <div className="bg-white rounded-md overflow-hidden flex justify-center items-center">
+                        <img src={screenshot} alt={`Screenshot ${index + 1}`} className="max-h-[300px] w-auto" />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                // Tampilan Mobile
+                <div className="grid grid-cols-2 gap-4">
+                  {project.screenshots.map((screenshot, index) => (
+                    <div key={index} className="bg-gray-900 rounded-2xl border-2 border-gray-800 p-2">
+                      <img src={screenshot} alt={`Screenshot ${index + 1}`} className="w-full rounded-xl" />
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* Kolom Kanan: Detail Proyek */}
+            <div className="space-y-6">
+              <div>
+                <h4 className="text-xl font-semibold text-white mb-4">Fitur Utama</h4>
+                <ul className="space-y-2">
+                  {project.features.map((feature, index) => (
+                    <li key={index} className="flex items-center gap-3 text-gray-300">
+                      <span className="w-2 h-2 bg-white rounded-full"></span>
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div>
+                <h4 className="text-xl font-semibold text-white mb-4">Teknologi yang Digunakan</h4>
+                <div className="flex flex-wrap gap-3">
+                  {project.tech.map((tech, index) => (
+                    <span key={index} className="px-4 py-2 bg-gray-600/80 text-white rounded-full border border-gray-500/30">
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <h4 className="text-xl font-semibold text-white mb-4">Tautan</h4>
+                <div className="flex gap-4">
+                  {project.links.github && (
+                    <a href={project.links.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-3 bg-gray-700 rounded-full hover:bg-gray-600 transition-colors">
+                      <Github className="w-5 h-5" />
+                      Source Code
+                    </a>
+                  )}
+                  {project.links.website && (
+                    <a href={project.links.website} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-3 bg-gray-600 rounded-full hover:bg-gray-700 transition-colors">
+                      <Globe className="w-5 h-5" />
+                      Kunjungi Situs
+                    </a>
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
   return (
     // --- 4. Perbarui Teks dan Judul ---
     // Mengganti judul dan deskripsi menjadi lebih umum.
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
       <div className="text-center mb-16">
-        <h2 className="text-4xl lg:text-5xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent mb-6">
+        <h2 className="text-4xl lg:text-5xl font-bold text-white bg-clip-text text-transparent mb-6">
           Portofolio Proyek
         </h2>
         <p className="text-xl text-gray-300 max-w-3xl mx-auto">
@@ -296,7 +422,7 @@ const LabSection = () => {
               onClick={() => setActiveFilter(category.id)}
               className={`flex items-center gap-2 px-6 py-3 rounded-full border transition-all duration-300 ${
                 activeFilter === category.id
-                  ? 'bg-purple-600 border-purple-600 text-white shadow-lg shadow-purple-600/25'
+                  ? 'bg-gray-600 border-gray-600 text-white shadow-lg border-white shadow-gray-600/25'
                   : 'bg-white/5 border-white/20 text-gray-300 hover:bg-white/10 hover:border-white/30'
               }`}
             >
@@ -314,107 +440,10 @@ const LabSection = () => {
       </div>
 
 {selectedProject && (
-        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-white/10 backdrop-blur-md rounded-3xl border border-white/20 max-w-6xl max-h-[90vh] overflow-y-auto">
-            <div className="p-8">
-              {/* Header Modal */}
-              <div className="flex justify-between items-start mb-8">
-                <div>
-                  <h3 className="text-3xl font-bold text-white mb-2">{selectedProject.title}</h3>
-                  <p className="text-gray-300">{selectedProject.longDescription}</p>
-                </div>
-                <button onClick={() => setSelectedProject(null)} className="p-2 bg-white/10 rounded-full hover:bg-white/20 transition-colors">
-                  <span className="text-white text-xl">✕</span>
-                </button>
-              </div>
-
-              {/* Konten Modal */}
-              <div className="grid lg:grid-cols-2 gap-8">
-                
-                {/* Kolom Kiri: Screenshots */}
-                <div>
-                  <h4 className="text-xl font-semibold text-white mb-4">Screenshots</h4>
-                  
-                  {/* --- PERUBAHAN UTAMA DI SINI --- */}
-                  {/* Tampilan Screenshot Dinamis berdasarkan tipe proyek */}
-
-                  {selectedProject.type === 'web' ? (
- // 1. Tampilan untuk Proyek WEB (Layout Browser, 1 Kolom)
- <div className="space-y-4">
-   {selectedProject.screenshots.map((screenshot, index) => (
-     <div key={index} className="relative w-full bg-gray-900 rounded-lg border-2 border-gray-800 shadow-lg p-2">
-        {/* Bar Jendela Browser */}
-        <div className="flex items-center gap-1.5 mb-2">
-           <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-           <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
-           <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-       </div>
-       {/* Konten Screenshot */}
-       <div className="bg-white rounded-md overflow-hidden flex justify-center items-center"> {/* Added flex and alignment */}
-         <img src={screenshot} alt={`Screenshot ${index + 1}`} className="max-h-[300px] w-auto" /> {/* Adjusted max-h and w-auto */}
-       </div>
-     </div>
-   ))}
- </div>
- ) : (
-                    // 2. Tampilan untuk Proyek MOBILE (Layout Grid, 2 Kolom)
-                    <div className="grid grid-cols-2 gap-4">
-                      {selectedProject.screenshots.map((screenshot, index) => (
-                        <div key={index} className="bg-gray-900 rounded-2xl border-2 border-gray-800 p-2">
-                          <img src={screenshot} alt={`Screenshot ${index + 1}`} className="w-full rounded-xl" />
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                </div>
-
-                {/* Kolom Kanan: Detail Proyek */}
-                <div className="space-y-6">
-                  <div>
-                    <h4 className="text-xl font-semibold text-white mb-4">Fitur Utama</h4>
-                    <ul className="space-y-2">
-                      {selectedProject.features.map((feature, index) => (
-                        <li key={index} className="flex items-center gap-3 text-gray-300">
-                          <span className="w-2 h-2 bg-purple-500 rounded-full"></span>
-                          {feature}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  <div>
-                    <h4 className="text-xl font-semibold text-white mb-4">Teknologi yang Digunakan</h4>
-                    <div className="flex flex-wrap gap-3">
-                      {selectedProject.tech.map((tech, index) => (
-                        <span key={index} className="px-4 py-2 bg-purple-500/20 text-purple-300 rounded-full border border-purple-500/30">
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div>
-                    <h4 className="text-xl font-semibold text-white mb-4">Tautan</h4>
-                    <div className="flex gap-4">
-                      {selectedProject.links.github && (
-                        <a href={selectedProject.links.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-3 bg-gray-700 rounded-full hover:bg-gray-600 transition-colors">
-                          <Github className="w-5 h-5" />
-                          Source Code
-                        </a>
-                      )}
-                      {selectedProject.links.website && (
-                         <a href={selectedProject.links.website} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-3 bg-blue-600 rounded-full hover:bg-blue-700 transition-colors">
-                          <Globe className="w-5 h-5" />
-                          Kunjungi Situs
-                        </a>
-                      )}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <ProjectModal
+          project={selectedProject}
+          onClose={() => setSelectedProject(null)}
+        />
       )}
     </div>
   );
