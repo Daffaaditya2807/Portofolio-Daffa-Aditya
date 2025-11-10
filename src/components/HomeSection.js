@@ -112,17 +112,17 @@ const HomeSection = ({ isLoaded, setActiveSection }) => {
 
             <h2 className="text-sm sm:text-base lg:text-lg xl:text-xl text-white mb-2 lg:mb-3 xl:mb-4">
               <span className=" decoration-2 underline-offset-4">
-               Daffa Aditya - ( A Software Engineer )
+               Daffa Aditya - (A Software Engineer)
               </span>
             </h2>
 
             <h1 className="text-2xl sm:text-3xl md:text-3xl lg:text-4xl xl:text-4xl 2xl:text-4xl font-bold text-white leading-tight lg:leading-none mb-4 sm:mb-6 lg:mb-8">
               <div className="break-words">
                 Teruslah Semangat<br />
-                Pantang{' '}
+                Pantang
           <span className="relative inline-block pt-3">
                   <span className="relative z-10 text-white italic px-3 py-1 sm:p-3">
-                    Menyerah
+                  Menyerah
                   </span>
                 </span>
                 <br />
@@ -171,7 +171,7 @@ const HomeSection = ({ isLoaded, setActiveSection }) => {
           </h2>
 
   <p className="text-lg">
-    Saat ini, saya adalah seorang mobile developer yang sedang menempuh pendidikan di Politeknik Negeri Jember dan baru saja lulus.
+    Saat ini, saya adalah seorang mobile developer yang menyelesaikan pendidikan di Politeknik Negeri Jember.
     <a href="https://facebook.com" className="text-blue-400 ml-1 inline-flex items-center gap-1">
       {/* svg facebook */}
         </a>

@@ -103,9 +103,9 @@ linear-gradient(135deg, #000000 0%, #222222 25%, #000000 50%, #222222 75%, #0000
 
 
       {/* Subtle Light Effects */}
-     <div className="fixed w-[600px] h-[600px] bg-gray-800 blur-[200px] rounded-full opacity-10 mix-blend-screen top-[10%] left-[20%] z-10 animate-pulse" style={{ animationDuration: '8s' }} />
+     {/* <div className="fixed w-[600px] h-[600px] bg-gray-800 blur-[200px] rounded-full opacity-10 mix-blend-screen top-[10%] left-[20%] z-10 animate-pulse" style={{ animationDuration: '8s' }} />
 <div className="fixed w-[400px] h-[400px] bg-gray-700 blur-[150px] rounded-full opacity-15 mix-blend-screen bottom-[20%] right-[15%] z-10 animate-pulse" style={{ animationDuration: '6s', animationDelay: '2s' }} />
-<div className="fixed w-[300px] h-[300px] bg-gray-900 blur-[120px] rounded-full opacity-20 mix-blend-screen top-[60%] left-[10%] z-10 animate-pulse" style={{ animationDuration: '10s', animationDelay: '4s' }} />
+<div className="fixed w-[300px] h-[300px] bg-gray-900 blur-[120px] rounded-full opacity-20 mix-blend-screen top-[60%] left-[10%] z-10 animate-pulse" style={{ animationDuration: '10s', animationDelay: '4s' }} /> */}
 
       {/* Komponen Navbar yang sudah dipisah - tetap menggunakan navbar asli */}
       <Navbar 
@@ -175,7 +175,7 @@ linear-gradient(135deg, #000000 0%, #222222 25%, #000000 50%, #222222 75%, #0000
       </div>
 
       {/* Floating Orbs untuk efek tambahan */}
-      <div className="fixed inset-0 overflow-hidden pointer-events-none z-15">
+      {/* <div className="fixed inset-0 overflow-hidden pointer-events-none z-15">
         {[...Array(8)].map((_, i) => (
           <div
             key={i}
@@ -194,7 +194,7 @@ linear-gradient(135deg, #000000 0%, #222222 25%, #000000 50%, #222222 75%, #0000
             }}
           />
         ))}
-      </div>
+      </div> */}
     </div>
   );
 };

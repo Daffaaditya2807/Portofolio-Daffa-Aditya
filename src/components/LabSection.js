@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ExternalLink, Github, Eye, Star, Smartphone, Users, Globe } from 'lucide-react';
+import { ExternalLink, Github, Eye, Star, Smartphone, Users, Computer, Globe } from 'lucide-react';
 
 
 const LabSection = ({ selectedProject, setSelectedProject }) => {
@@ -199,6 +199,37 @@ const [activeFilter, setActiveFilter] = useState('all');
       links: { website: "https://lumintuenergipersada.my.id/" },
       status: "published"
     },
+       {
+      id: 6,
+      type: "web",
+      title: "Piscis Ai",
+      category: "productivity",
+      description: "Aplikasi web untuk mendeteksi jenis ikan menggunakan teknologi AI (Artificial Intelligence).",
+     longDescription: "Piscis AI adalah aplikasi web berbasis kecerdasan buatan (AI) yang dirancang untuk mendeteksi jenis ikan secara otomatis melalui gambar. Model AI pada aplikasi ini dilatih menggunakan platform Techtable Machine, sehingga mampu mengenali ciri visual dari berbagai jenis ikan dengan tingkat akurasi yang baik. Saat ini, sistem dapat mengidentifikasi beberapa jenis ikan yang telah dilatih dalam model, yaitu: Bandeng, Belanak, Bulan-Bulan, Ikan Mas India, Ikan Mas Koki, Ikan Mas Perak, Ikan Mas Rumput, Kakap, Ketang Laut, Nila, Patin, Senangin, dan Wader Bintik Hitam. Dengan antarmuka yang sederhana dan responsif, Piscis AI mempermudah pengguna dalam mengenali jenis ikan secara cepat tanpa memerlukan analisis manual.",
+      image: getImage("app6/main.png"),
+      screenshots: [getImage("app6/main.png"), getImage("app6/fitur.png"), getImage("app6/ai.png") ],
+      tech: ["Vue3", "Typescript", "Tailwind CSS", "Techtable Machine",],
+      features: ["Deteksi jenis Ikan dengan AI",],
+      stats: {},
+      links: { website: "https://piscis-ai.vercel.app/" , github: "https://github.com/Daffaaditya2807/piscisAI"},
+      status: "published"
+    },
+           {
+      id: 7,
+      type: "desktop",
+      title: "Primadona Apps - Background Remover",
+      category: "productivity",
+      description: "Aplikasi desktop untuk menghapus latar belakang gambar secara otomatis menggunakan teknologi AI.",
+longDescription: "Primadona Apps Background Remover adalah aplikasi desktop yang dirancang khusus untuk kebutuhan percetakan foto formal, bukan untuk keperluan desain grafis atau editing kreatif lainnya. Aplikasi ini dikembangkan menggunakan Python dengan dukungan library 'rembg' untuk menghapus latar belakang gambar secara otomatis menggunakan teknologi AI. Selain menghapus latar belakang, pengguna juga dapat mengganti warna background foto sesuai kebutuhan, seperti warna merah, biru, atau putih yang umum digunakan untuk foto resmi. Primadona Apps Background Remover juga menyediakan fitur pemotongan (crop) otomatis dalam ukuran standar foto formal yaitu 2x3, 3x4, dan 4x6. Hasil akhir foto dapat disimpan dalam format PNG dengan kualitas tinggi, menjadikannya solusi praktis dan efisien bagi usaha percetakan foto formal.",
+
+      image: getImage("app7/main.png"),
+      screenshots: [getImage("app7/main.png"), getImage("app7/bgremover.png"), getImage("app7/colorbg.png") , getImage("app7/crop.png") ],
+      tech: ["Python", "rembg", "pyQT5", "PyInstaller",],
+      features: ["Hapus latar belakang gambar dengan AI", "Ubah warna background", "Simpan dalam format PNG/JPG" , "Ubah Ukuran Gambar dengan rasio 3x4,4x6 dan 2x3"],
+      stats: {},
+      links: {  github: "https://github.com/Daffaaditya2807/Primadona-Apps-Remove-Background---Desktop"},
+      status: "published"
+    },
 
   ];
 
@@ -208,6 +239,7 @@ const [activeFilter, setActiveFilter] = useState('all');
     { id: 'all', label: 'Semua Proyek', icon: Star },
     { id: 'mobile', label: 'Aplikasi Mobile', icon: Smartphone },
     { id: 'web', label: 'Aplikasi Web', icon: Globe },
+    {id: 'desktop', label: 'Aplikasi Desktop', icon: Computer },
     { id: 'ecommerce', label: 'E-Commerce', icon: Users },
     { id: 'communication', label: 'Komunikasi', icon: Users },
   ];
@@ -322,7 +354,7 @@ const [activeFilter, setActiveFilter] = useState('all');
             <div>
               <h4 className="text-xl font-semibold text-white mb-4">Screenshots</h4>
               
-              {project.type === 'web' ? (
+              {project.type === 'web' || project.type === 'desktop' ? (
                 // Tampilan Web
                 <div className="space-y-4">
                   {project.screenshots.map((screenshot, index) => (
